@@ -15,7 +15,7 @@ class EpwToWea(Function):
         'Wea (eg. "6/21 to 9/21 between 8 and 16 @1"). Note that the timestep '
         'of the analysis period should match the input timestep and a * must be at '
         'the end of the string if the input epw is for a leap year. If None, '
-        'the Wea will be annual.', default='None'
+        'the Wea will be annual.', default=''
     )
 
     timestep = Inputs.int(
