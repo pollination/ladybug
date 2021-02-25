@@ -27,7 +27,7 @@ class EpwToWea(Function):
     @command
     def epw_to_wea(self):
         return 'ladybug translate epw-to-wea weather.epw ' \
-            '--analysis-period {{self.period}} --timestep {{self.timestep}} ' \
+            '--analysis-period "{{self.period}}" --timestep {{self.timestep}} ' \
             '--output-file weather.wea'
 
     wea = Outputs.file(
