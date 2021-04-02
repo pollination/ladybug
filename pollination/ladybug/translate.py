@@ -60,3 +60,32 @@ class EpwToDdy(Function):
         path='weather.ddy'
     )
 
+
+@dataclass
+class WeaToConstant(Function):
+    """Convert a Wea file to have a constant value for each datetime.
+
+    This is useful in workflows where hourly irradiance values are inconsequential
+    to the analysis and one is only using the Wea as a format to pass location
+    and datetime information (eg. for direct sun hours).
+    """
+
+    wea = Inputs.file(
+        description='Wea file with irradiance values to be set to constant.',
+        path='weather.wea', extensions=['wea']
+    )
+
+    value = Inputs.float(
+        description='The direct and diffuse irradiance value that will be written '
+        'in for all datetimes of the Wea.', default=1000
+    )
+
+    @command
+    def wea_to_constant(self):
+        return 'ladybug translate wea-to-constant weather.wea ' \
+            '--value {{self.value}} --output-file constant.wea'
+
+    constant_wea = Outputs.file(
+        description='A wea file with constant irradiance values for each datetime.',
+        path='constant.wea'
+    )
