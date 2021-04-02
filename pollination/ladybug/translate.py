@@ -75,7 +75,7 @@ class WeaToConstant(Function):
         path='weather.wea', extensions=['wea']
     )
 
-    value = Inputs.float(
+    value = Inputs.int(
         description='The direct and diffuse irradiance value that will be written '
         'in for all datetimes of the Wea.', default=1000
     )
