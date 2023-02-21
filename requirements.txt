@@ -1,2 +1,2 @@
 pollination-dsl==0.14.1
-ladybug-core==0.40.10
+ladybug-core==0.41.12
